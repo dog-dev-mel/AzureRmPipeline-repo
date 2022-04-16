@@ -1,0 +1,35 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "ManufacturingVnetSettings": {
+            "value": {
+                "name": "ManufacturingVnet",
+                "addressPrefix": [
+                    {
+                        "name": "",
+                        "addressPrefix": "10.30.0.0/16"
+                    }
+                ],
+                "subnets": [
+                    {
+                        "name": "ManufacturingSystemSubnet",
+                        "addressPrefix": "10.30.10.0/24"
+                    },
+                    {
+                        "name": "SensorSubnet1",
+                        "addressPrefix": "10.30.20.0/24"
+                    },
+                    {
+                        "name": "SensorSubnet2",
+                        "addressPrefix": "10.30.21.0/24"
+                    },
+                    {
+                        "name": "SensorSubnet3",
+                        "addressPrefix": "10.30.22.0/24"
+                    }
+                ]
+            }
+        }
+    }
+}
