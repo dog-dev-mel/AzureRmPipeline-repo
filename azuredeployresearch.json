@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ResearchVnetSettings": {
+      "type": "object"
+    }
+
+  },
+  "functions": [],
+  "variables": {
+  },
+  "resources": [
+    {
+      "name": "[parameters('ResearchVnetSettings').name]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2020-11-01",
+      "location": "australiacentral",
+      "tags": {
+        "displayName": "Core Service Vnet"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('ResearchVnetSettings').addressPrefix[0].addressPrefix]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('ResearchVnetSettings').subnets[0].name]",
+            "properties": {
+              "addressPrefix": "[parameters('ResearchVnetSettings').subnets[0].addressPrefix]"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "outputs": {
+  }
+}

@@ -1,0 +1,23 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "ResearchVnetSettings": {
+            "value": {
+                "name": "ResearchVnet",
+                "addressPrefix": [
+                    {
+                        "name": "",
+                        "addressPrefix": "10.40.0.0/16"
+                    }
+                ],
+                "subnets": [
+                    {
+                        "name": "ResearchSystemSubnet",
+                        "addressPrefix": "10.40.10.0/24"
+                    }
+                ]
+            }
+        }
+    }
+}
