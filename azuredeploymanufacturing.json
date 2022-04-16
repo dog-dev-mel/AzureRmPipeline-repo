@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ManufacturingVnetSettings": {
+      "type": "object"
+    }
+
+  },
+  "functions": [],
+  "variables": {
+  },
+  "resources": [
+    {
+      "name": "[parameters('ManufacturingVnetSettings').name]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2020-11-01",
+      "location": "australiacentral",
+      "tags": {
+        "displayName": "Core Service Vnet"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('ManufacturingVnetSettings').addressPrefix[0].addressPrefix]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('ManufacturingVnetSettings').subnets[0].name]",
+            "properties": {
+              "addressPrefix": "[parameters('ManufacturingVnetSettings').subnets[0].addressPrefix]"
+            }
+          },
+          {
+            "name": "[parameters('ManufacturingVnetSettings').subnets[1].name]",
+            "properties": {
+              "addressPrefix": "[parameters('ManufacturingVnetSettings').subnets[1].addressPrefix]"
+            }
+          },
+          {
+            "name": "[parameters('ManufacturingVnetSettings').subnets[2].name]",
+            "properties": {
+              "addressPrefix": "[parameters('ManufacturingVnetSettings').subnets[2].addressPrefix]"
+            }
+          },
+          {
+            "name": "[parameters('ManufacturingVnetSettings').subnets[3].name]",
+            "properties": {
+              "addressPrefix": "[parameters('ManufacturingVnetSettings').subnets[3].addressPrefix]"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "outputs": {
+  }
+}
