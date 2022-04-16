@@ -27,11 +27,14 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-        "description": "Specify a location for the resources."
-      }
+      "defaultValue": "[resourceGroup().location]"
+    },
+
+    "CoreServiceVnetSettings": {
+      "type": "object"
     }
+
+
   },
   "functions": [],
   "variables": {
@@ -49,6 +52,48 @@
       "kind": "StorageV2",
       "sku": {
         "name": "[parameters('storageSKU')]"
+      }
+    },
+    {
+      "name": "[parameters('CoreServiceVnetSettings').name]",
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2020-11-01",
+      "location": "[parameters('location')]",
+      "tags": {
+        "displayName": "Core Service Vnet"
+      },
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "[parameters('CoreServiceVnetSettings').addressPrefix[0].addressPrefix]"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "[parameters('CoreServiceVnetSettings').subnets[0].name]",
+            "properties": {
+              "addressPrefix": "[parameters('CoreServiceVnetSettings').subnets[0].addressPrefix]"
+            }
+          },
+          {
+            "name": "[parameters('CoreServiceVnetSettings').subnets[1].name]",
+            "properties": {
+              "addressPrefix": "[parameters('CoreServiceVnetSettings').subnets[1].addressPrefix]"
+            }
+          },
+          {
+            "name": "[parameters('CoreServiceVnetSettings').subnets[2].name]",
+            "properties": {
+              "addressPrefix": "[parameters('CoreServiceVnetSettings').subnets[2].addressPrefix]"
+            }
+          },
+          {
+            "name": "[parameters('CoreServiceVnetSettings').subnets[3].name]",
+            "properties": {
+              "addressPrefix": "[parameters('CoreServiceVnetSettings').subnets[3].addressPrefix]"
+            }
+          }
+        ]
       }
     }
   ],

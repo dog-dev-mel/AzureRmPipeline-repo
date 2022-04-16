@@ -4,6 +4,35 @@
     "parameters": {
         "storagePrefix": {
             "value": "yz"
+        },
+        "CoreServiceVnetSettings": {
+            "value": {
+                "name": "CoreServiceVnet",
+                "addressPrefix": [
+                    {
+                        "name": "",
+                        "addressPrefix": "10.20.0.0/16"
+                    }
+                ],
+                "subnets": [
+                    {
+                        "name": "GatewaySubnet",
+                        "addressPrefix": "10.20.0.0/27"
+                    },
+                    {
+                        "name": "DatebaseSubnet",
+                        "addressPrefix": "10.20.20.0/24"
+                    },
+                    {
+                        "name": "SharedServicesSubnet",
+                        "addressPrefix": "10.20.10.0/24"
+                    },
+                    {
+                        "name": "PublicWebServiceSubnet",
+                        "addressPrefix": "10.20.30.0/24"
+                    }
+                ]
+            }
         }
     }
 }
